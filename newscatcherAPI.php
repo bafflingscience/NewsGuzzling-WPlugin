@@ -17,12 +17,18 @@ defined('ABSPATH') or die;
 
 require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
-class NewsCatchGuzzleWP
+class NewsGuzzler
 {
     public function __construct() 
     {
         add_action('admin_menu', array($this, 'news_add_menu_page'));
-        add_action('init', array($this, 'custom_post_type'));
+        $this->create_post_type();
+
+     // add_action('admin_enqueue_scripts', array($this, 'enqueue'));
+    }
+
+    public function register() {
+        add_action('admin_enqueue_scripts', array($this, 'enqueue'));
     }
     
     public function news_add_menu_page()
@@ -41,7 +47,7 @@ class NewsCatchGuzzleWP
     public function activate() {
         //* generated menu, generate CPT, flush rewrite rules *//
         $this->news_add_menu_page();
-        $this->custom_post_type();
+        $this->create_post_type();
         flush_rewrite_rules( hard );
      }
    
@@ -53,20 +59,37 @@ class NewsCatchGuzzleWP
        //* Delete CPT
        //* Delete all the plugin Data from the DB *//
    }
-   public function custom_post_type() {
+   protected function create_post_type() {
        register_post_type( 
            'news', [
                'public' => true,
                'label' => 'News']);
    }
+
+   public function enqueue() {
+    wp_enqueue_style( 'style', plugins_url( '/assets/style.css', __FILE__ ), array(''), false, 'all' );
+    wp_enqueue_scripts( 'script', plugins_url( '/assets/scriptual.css', __FILE__ ), array(''), false, 'all' );
+   }
 }
 
-if (class_exists('NewsCatchGuzzleWP')) 
+class PostWithMost extends NewsGuzzler
 {
-    $newscatchguzzlewp = new NewsCatchGuzzleWP();
+    public function register_post_type() {
+        $this->create_post_type();
+    }
 }
 
-register_activation_hook( __FILE__, array($newscatchguzzlewp, 'activate' ) );
-register_deactivation_hook( __FILE__, array($newscatchguzzlewp, 'deactivate') );
+$postwithmost = new PostWithMost();
+$postwithmost->register_post_type();
+
+if (class_exists('NewsCatchGuzzleWP')) {
+    $newsguzzler = new NewsGuzzler();
+    $newsguzzler->register();
+}
+
+
+
+register_activation_hook( __FILE__, array($newsguzzler, 'activate' ) );
+register_deactivation_hook( __FILE__, array($newsguzzler, 'deactivate') );
 
 
