@@ -1,5 +1,16 @@
 {
+    "name": "theda/newscatcher-api",
     "require": {
-        "guzzlehttp/guzzle": "^7.0"
+        "guzzlehttp/guzzle": "^7.3"
+    },
+    "authors": [
+        {
+            "name": "Baffling Science",
+            "email": "bafflingscience@protonmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"}
     }
 }

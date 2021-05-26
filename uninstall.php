@@ -10,12 +10,12 @@
    die;
  }
 
-// // Clear any shit still stored in the database
-// $news = get_posts( array( 'post_type' => 'news', 'numberposts' => -1 ));
+// Clear any shit still stored in the database
+$news = get_posts( array( 'post_type' => 'news', 'numberposts' => -1 ));
 
-// foreach ($news as $newz ) {
-//   wp_delete_post($anewz->ID, false);
-// }
+foreach ($news as $newz ) {
+  wp_delete_post($anewz->ID, false);
+}
 
 // Access DB via SQL and Delete the shit
 global $wpdb;

@@ -1,5 +1,5 @@
 <?php 
-  include 'newscatch-guzzler.php';
+  include 'newscatcherAPI.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
