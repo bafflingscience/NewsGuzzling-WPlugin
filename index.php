@@ -1,7 +1,7 @@
-<?php 
-  include 'newscatcherAPI.php';
+<?php
+
 ?>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,11 +14,11 @@
   <main class="main-section">
     <section class="cards">
       <header class="card">
-        <h2 class="card-title"><?php  ?></h2>
+        <h2 class="card-title"></h2>
 
       </header>
     </section>
   </main>
  
 </body>
-</html>
+</html> -->

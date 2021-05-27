@@ -1,9 +1,6 @@
 <?php
-
 /**
- * Trigger on Plugin Uninstall
- * 
- * @package NewsGuzzler-WPlugin
+ * @package Newzzler
  */
 
  if (! defined( 'WP_UNINSTALL_PLUGIN ')) {

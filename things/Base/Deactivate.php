@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package NewsGuzzlerWPlugin
+ * @package Newzzler
  */
-namespace Inc;
+namespace Things\Base;
 
 class Deactivate
 {

@@ -1,14 +1,15 @@
 <?php
 
 /**
- * @package NewsGuzzlerWPlugin
+ * @package Newzzler
  */
-namespace Inc;
+namespace Things\Base;
 
 class Activate
 { 
     public static function activate()
     {
-      flush_rewrite_rules( hard );
+      flush_rewrite_rules();
+
     }
 }
